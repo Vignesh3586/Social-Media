@@ -1,0 +1,11 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "userId": 1,
+      "title": "hi",
+      "body": "HI",
+      "date": "Aug 1st 2024,9:26:20 AM"
+    }
+  ]
+}
