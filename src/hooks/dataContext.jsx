@@ -15,7 +15,7 @@ const [searchResults, setSearchResults] = useState([]);
 const [editTitle, setEditTitle] = useState('');
 const [editBody, setEditBody] = useState('');
 const navigate = useNavigate();
-const {data,fetchError,isLoading}=useAxiosFetch('http://localhost:3500/posts')
+const {data,fetchError,isLoading}=useAxiosFetch('https://json-server-social-media-ic2i.vercel.app/db.json')
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -35,11 +35,15 @@ const handleSubmit = async (e) => {
 };
 
 useEffect(() => {
-    setPosts(data)
+  if (Array.isArray(data)) {
+    setPosts(data);
+  } else {
+    setPosts([]);
+  }
 }, [data]);
 
 useEffect(() => {
-  if (posts) {
+  if (Array.isArray(posts)) {
         const filteredPosts = posts.filter((post) => (
         ((post.title).toLowerCase()).includes(search.toLowerCase()) ||
         ((post.body).toLowerCase()).includes(search.toLowerCase()))
